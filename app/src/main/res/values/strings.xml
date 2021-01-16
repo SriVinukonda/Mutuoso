@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">Mutuoso</string>
+    <string name="app_name">mutuoso</string>
     <string name="team_name">Project by Big O</string>
-
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">log in</string>
+    <string name="signup">sign up</string>
+    <string name="signupmsg">no account? click here to sign up</string>
 </resources>
