@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "333686226837",
+    "firebase_url": "https://mutuoso-default-rtdb.firebaseio.com",
+    "project_id": "mutuoso",
+    "storage_bucket": "mutuoso.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333686226837:android:d26f4b514fe960f0e2c09c",
+        "android_client_info": {
+          "package_name": "com.BigO.mutuoso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333686226837-drhiq80k9323mbbafu1jet8d0tnanmpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4ZWedawfXBiYz0tOgiILUl-5X6XRr-u0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333686226837-drhiq80k9323mbbafu1jet8d0tnanmpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
