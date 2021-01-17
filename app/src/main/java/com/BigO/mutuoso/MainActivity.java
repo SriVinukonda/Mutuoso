@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
             String[] list = u.split("@",2);
             temp = list[0];
             Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this, HelpMapsActivity.class);
+            startActivity(i);
         }
     }
 }
