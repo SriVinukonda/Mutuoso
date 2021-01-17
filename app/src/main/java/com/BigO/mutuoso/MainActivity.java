@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private EditText e1,e2;
-    private Button b1;
+    private Button b1,b2;
     private FirebaseAuth mAuth;
     private FirebaseAuth auth;
     private String u,p,temp;
@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, SignUp.class);
+                startActivity(i);
+            }
+        });
     }
     private void login()
     {
@@ -54,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = auth.getCurrentUser();
-                            updateUI(user);
+                            firebase_user.user = mAuth.getCurrentUser();
+                            updateUI(firebase_user.user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(MainActivity.this, "Authentication failed.",
