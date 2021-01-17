@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class SignUp extends AppCompatActivity {
@@ -26,6 +27,8 @@ public class SignUp extends AppCompatActivity {
     private String name, age, email, pass, cpass;
     private Button b1;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class SignUp extends AppCompatActivity {
         e4 = findViewById(R.id.signUpPassword);
         e5 = findViewById(R.id.signUpPasswordConfirm);
         b1 = findViewById(R.id.signUpButton);
+        database = FirebaseDatabase.getInstance();
+        myRef = FirebaseDatabase.getInstance().getReference();
         b1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
@@ -75,19 +80,22 @@ public class SignUp extends AppCompatActivity {
                         }
                     }
                 });
+        finish();
     }
     void updateUser()
     {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
         Random rand = new Random();
         String temp = name.substring(0,5) + rand.nextInt(1000);
-        DatabaseReference myRef = database.getReference("users");
-        myRef.setValue(temp);
-        DatabaseReference myRef2 = database.getReference(temp);
-        myRef2.setValue(email);
-        myRef2.setValue(age);
-        myRef2.setValue(name);
-        Intent i = new Intent(SignUp.this, HelpMapsActivity.class);
-        startActivity(i);
+        try {
+            myRef.setValue(temp);
+            HashMap<String, Object> result = new HashMap<>();
+            result.put("email", email);
+            result.put("age", age);
+            result.put("name", name);
+            myRef.child("users").child(temp).push().updateChildren(result);
+        }catch (Exception e)
+        {
+            Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }

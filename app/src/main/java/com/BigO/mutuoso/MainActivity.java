@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText e1,e2;
     private Button b1,b2;
     private FirebaseAuth mAuth;
-    private FirebaseAuth auth;
     private String u,p,temp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         e1 = findViewById(R.id.e1);
         e2 = findViewById(R.id.e2);
         b1 = findViewById(R.id.b1);
-        auth = FirebaseAuth.getInstance();
+        b2 = findViewById(R.id.b2);
+        mAuth = FirebaseAuth.getInstance();
         b1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void login()
     {
-        auth.signInWithEmailAndPassword(u,p)
+        mAuth.signInWithEmailAndPassword(u,p)
                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
